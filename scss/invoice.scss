@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Rowdies:wght@300;400;700&display=swap');
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+$font-family-sans-serif:'Rowdies', cursive;
+// $font-family-sans-serif:'Balsamiq Sans', cursive;
+$component-active-bg: black;
+$enable-rounded:false;
+
+.del-btn{
+    opacity: 0;
+}
+tr:hover .del-btn{
+    opacity: 100%;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

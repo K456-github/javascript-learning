@@ -33,17 +33,17 @@ const total = document.querySelector("#total");
 const listTable = document.querySelector("#listTable");
 
 //function
-const createTr = () => {
+const createTr = (service,quantity) => {
   const tr = document.createElement("tr");
-  const total = services.price * quantity;
+  const total = service.price * quantity;
   tr.classList.add("list");
-  tr.setAttribute("service-id", services.id);
+  tr.setAttribute("service-id", service.id);
   tr.innerhtml = `
-    <td class = "d-flex justify-content-between">${services.title} 
+    <td class = "d-flex justify-content-between">${service.title} 
     <i class = "bi bi-trash3 del-btn text-danger"></i>
     </td>
     <td class ="text-end quantity">${quantity}</td>
-    <td class ="text-end">${services.price}</td>
+    <td class ="text-end">${service.price}</td>
     <td class ="text-end">${total}</td>`;
   return tr;
 };
