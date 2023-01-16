@@ -42,9 +42,9 @@ const createTr = (service,quantity) => {
     <td class = "d-flex justify-content-between">${service.title} 
     <i class = "bi bi-trash3 del-btn text-danger"></i>
     </td>
-    <td class ="text-end quantity">${quantity}</td>
+    <td class ="text-end list-quantity">${quantity}</td>
     <td class ="text-end">${service.price}</td>
-    <td class ="text-end">${total}</td>`;
+    <td class ="text-end list-total">${total}</td>`;
   return tr;
 };
 
@@ -90,7 +90,7 @@ invoiceform.addEventListener("submit", (event) => {
   const selectedservice = services.find(({ id }) => id == SelectService.value);
 
   const isExistedService = [...lists.children].find(
-    (el) => el.getAttribute("service-id") === selectedservice.id
+    el => el.getAttribute("service-id") === selectedservice.id
   );
 
   if (isExistedService) {
