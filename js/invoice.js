@@ -24,7 +24,7 @@ const services = [
 //selectors
 const app = document.querySelector("#app");
 const invoiceform = document.querySelector("#invoiceform");
-const SelectService = document.querySelector("#SelectService");
+const SelectService = document.querySelector("#SelectService");33
 const quantity = document.querySelector("#quantity");
 const lists = document.querySelector("#lists");
 const subTotal = document.querySelector("#subTotal");
@@ -35,10 +35,10 @@ const listTable = document.querySelector("#listTable");
 //function
 const createTr = (service,quantity) => {
   const tr = document.createElement("tr");
-  const total = service.price * quantity;
   tr.classList.add("list");
   tr.setAttribute("service-id", service.id);
-  tr.innerhtml = `
+  const total = service.price * quantity;
+  tr.innerHTML = `
     <td class = "d-flex justify-content-between">${service.title} 
     <i class = "bi bi-trash3 del-btn text-danger"></i>
     </td>
@@ -113,9 +113,9 @@ invoiceform.addEventListener("submit", (event) => {
 app.addEventListener("click", (event) => {
   const currentElement = event.target;
   if (currentElement.classList.contains("del-btn")) {
+    //delete function here
     currentElement.closest("tr").remove();
-    showTable();
     findTotal();
+    showTable();
   }
-  //delete function here
 });
