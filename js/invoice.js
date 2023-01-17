@@ -24,16 +24,23 @@ const services = [
 //selectors
 const app = document.querySelector("#app");
 const invoiceform = document.querySelector("#invoiceform");
-const SelectService = document.querySelector("#SelectService");33
+const SelectService = document.querySelector("#SelectService");
+33;
 const quantity = document.querySelector("#quantity");
 const lists = document.querySelector("#lists");
 const subTotal = document.querySelector("#subTotal");
 const tax = document.querySelector("#tax");
 const total = document.querySelector("#total");
 const listTable = document.querySelector("#listTable");
+const addServiceOpenBtn = document.querySelector("#addServiceOpenBtn");
+const addServiceModal = document.querySelector("#addServiceModal");
+const closeServiceModalBtn = document.querySelector("#closeServiceModalBtn");
+const addServiceForm = document.querySelector("#addServiceForm");
+const menu = document.querySelectorAll(".menu");
+const sideBar = document.querySelector("#sideBar");
 
 //function
-const createTr = (service,quantity) => {
+const createTr = (service, quantity) => {
   const tr = document.createElement("tr");
   tr.classList.add("list");
   tr.setAttribute("service-id", service.id);
@@ -90,7 +97,7 @@ invoiceform.addEventListener("submit", (event) => {
   const selectedservice = services.find(({ id }) => id == SelectService.value);
 
   const isExistedService = [...lists.children].find(
-    el => el.getAttribute("service-id") === selectedservice.id
+    (el) => el.getAttribute("service-id") === selectedservice.id
   );
 
   if (isExistedService) {
@@ -119,3 +126,35 @@ app.addEventListener("click", (event) => {
     showTable();
   }
 });
+
+addServiceOpenBtn.addEventListener("click", () => {
+  addServiceModal.classList.remove("d-none");
+});
+
+closeServiceModalBtn.addEventListener("click", () => {
+  addServiceModal.classList.add("d-none");
+});
+
+addServiceForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  console.log(formData.get("serviceTitle"), formData.get("servicePrice"));
+
+  const id = Date.now();
+  //add data
+  services.push({
+    id,
+    title: formData.get("serviceTitle"),
+    price: formData.get("servicePrice"),
+  });
+  SelectService.append(new Option(formData.get("serviceTitle"), id));
+  event.target.reset();
+  addServiceModal.classList.add("d-none");
+});
+
+// menu.forEach((el) => {
+//   el.addEventListener("click", () => {
+//     sideBar.classList.toggle("active");
+//   });
+// });

@@ -6,11 +6,34 @@ $font-family-sans-serif:'Rowdies', cursive;
 $component-active-bg: black;
 $enable-rounded:false;
 
-.del-btn{
-    opacity: 0;
-}
-tr:hover .del-btn{
-    opacity: 100%;
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+.fontcustom{
+    font-family: 'Balsamiq Sans', cursive;
 }
 
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+.del-btn {
+  //   display: none;
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+tr:hover .del-btn {
+  //   display: inline;
+  transform: scale(1);
+}
+
+.bg-transparent-50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.side-bar {
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+.side-bar.active {
+  transform: translateX(0);
+}
+
+.menu:active {
+  transform: scale(0.8);
+}
